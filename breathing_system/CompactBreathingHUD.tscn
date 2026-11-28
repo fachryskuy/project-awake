@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://breathing_system/breathing_system.gd" id="1_main"]
+[ext_resource type="Script" path="res://breathing_system/rhythm_circle.gd" id="2_circle"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.027451, 0.0431373, 0.0705882, 0.62)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.203922, 0.827451, 0.6, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CompactBreathingHUD" type="PanelContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+script = ExtResource("1_main")
+
+[node name="Layout" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OxygenRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 14.0
+offset_right = 160.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="OxygenCaption" type="Label" parent="Layout/OxygenRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.560784, 0.65098, 0.701961, 1)
+theme_override_font_sizes/font_size = 12
+text = "O2"
+vertical_alignment = 1
+
+[node name="OxygenBar" type="ProgressBar" parent="Layout/OxygenRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+
+[node name="OxygenValue" type="Label" parent="Layout/OxygenRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.898039, 0.960784, 0.976471, 1)
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RhythmBox" type="VBoxContainer" parent="Layout"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -236.0
+offset_right = 140.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="ResultLabel" type="Label" parent="Layout/RhythmBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.8, 0.84, 1)
+theme_override_font_sizes/font_size = 18
+text = "—"
+horizontal_alignment = 1
+
+[node name="RhythmCircle" type="Control" parent="Layout/RhythmBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+script = ExtResource("2_circle")
+
+[node name="ChokeLabel" type="Label" parent="Layout/RhythmBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.976471, 0.443137, 0.443137, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Layout/RhythmBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.560784, 0.65098, 0.701961, 1)
+theme_override_font_sizes/font_size = 10
+text = "Press SPACE when the circle touches the ring"
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qdrpavggwnjb" path="res://Script/main.gd" id="1_main"]
 [ext_resource type="Script" uid="uid://bdm1aqeh3rfkf" path="res://Script/eye_mechanic.gd" id="2_eye"]
 [ext_resource type="Texture2D" uid="uid://ci6i3gva1f17r" path="res://Placeholder.jpg" id="2_r34rm"]
+[ext_resource type="PackedScene" path="res://breathing_system/CompactBreathingHUD.tscn" id="3_hud"]
 
 [node name="MAIN" type="Control" unique_id=1543667033]
 layout_mode = 3
@@ -38,3 +39,59 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_eye")
+
+[node name="BreathingHUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="GameOverOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="GameOverOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0156863, 0.027451, 0.0470588, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameOverOverlay/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="GameOverOverlay/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.443137, 0.443137, 1)
+theme_override_font_sizes/font_size = 40
+text = "OUT OF OXYGEN"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverOverlay/CenterContainer/VBox"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="GameOverOverlay/CenterContainer/VBox"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="GameOverOverlay/CenterContainer/VBox/RetryButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOverOverlay/CenterContainer/VBox/MenuButton" to="." method="_on_menu_pressed"]

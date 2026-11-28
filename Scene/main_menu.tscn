@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bfj2jlvaya837"]
+
+[node name="MainMenu" type="Control" unique_id=1946025328]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+<<<<<<< Updated upstream
+=======
+script = ExtResource("1_ftydy")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1859616296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7058824, 1, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1241645590]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1990158409]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Judul_Game" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1395763493]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23, 0.13662, 0.0966, 1)
+theme_override_fonts/font = ExtResource("2_pvidh")
+theme_override_font_sizes/font_size = 60
+text = "Project Awake"
+horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1020752191]
+layout_mode = 2
+
+[node name="Play_Button" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1352511695]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_hptlk")
+texture_pressed = ExtResource("4_ejkra")
+texture_hover = ExtResource("4_s2f1d")
+stretch_mode = 3
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=865017244]
+layout_mode = 2
+
+[node name="Option_Button" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=965551270]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_oqads")
+texture_pressed = ExtResource("7_ejkra")
+texture_hover = ExtResource("7_s2f1d")
+stretch_mode = 3
+
+[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1275924263]
+layout_mode = 2
+
+[node name="Quit_Button" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=967803580]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_klvvj")
+texture_pressed = ExtResource("10_47k5r")
+texture_hover = ExtResource("11_hag5k")
+stretch_mode = 3
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Option_Button" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
+>>>>>>> Stashed changes

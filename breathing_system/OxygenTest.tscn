@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://breathing_system/oxygen_test.gd" id="1_test"]
+[ext_resource type="PackedScene" path="res://breathing_system/BreathingSystem.tscn" id="2_system"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_debug"]
+bg_color = Color(0.0588235, 0.0862745, 0.129412, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.184314, 0.290196, 0.360784, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="OxygenTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_test")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0313726, 0.0470588, 0.0745098, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="SystemHolder" type="CenterContainer" parent="Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BreathingSystem" parent="Margin/HBox/SystemHolder" instance=ExtResource("2_system")]
+layout_mode = 2
+
+[node name="DebugPanel" type="PanelContainer" parent="Margin/HBox"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_debug")
+
+[node name="DebugMargin" type="MarginContainer" parent="Margin/HBox/DebugPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="DebugVBox" type="VBoxContainer" parent="Margin/HBox/DebugPanel/DebugMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DebugTitle" type="Label" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.960784, 0.976471, 1)
+theme_override_font_sizes/font_size = 17
+text = "DEBUG CONTROLS"
+
+[node name="TypingButton" type="Button" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Simulate typing  (drain x3)"
+
+[node name="ChokeButton" type="Button" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Trigger choking event  (C)"
+
+[node name="ResetButton" type="Button" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Reset oxygen  (R)"
+
+[node name="Separator" type="HSeparator" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.8, 0.84, 1)
+theme_override_font_sizes/font_size = 14
+text = "Drain multiplier: 1.0x\nSystem: stopped\nOxygen signal: 100.0"
+
+[node name="SignalLabel" type="Label" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.203922, 0.827451, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+text = "Last signal:\nReady"
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HelpLabel" type="Label" parent="Margin/HBox/DebugPanel/DebugMargin/DebugVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.65098, 0.701961, 1)
+theme_override_font_sizes/font_size = 12
+text = "SPACE  breathe\nT  toggle typing\nC  trigger choke\nR  reset"

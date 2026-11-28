@@ -1,3 +1,40 @@
 [gd_scene format=3 uid="uid://ro0wijfk08ha"]
 
-[node name="MAIN" type="Node2D"]
+[ext_resource type="Script" uid="uid://qdrpavggwnjb" path="res://Script/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://bdm1aqeh3rfkf" path="res://Script/eye_mechanic.gd" id="2_eye"]
+[ext_resource type="Texture2D" uid="uid://ci6i3gva1f17r" path="res://Placeholder.jpg" id="2_r34rm"]
+
+[node name="MAIN" type="Control" unique_id=1543667033]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background(PlaceHolder)" type="Sprite2D" parent="." unique_id=978144836]
+position = Vector2(577.3486, 320.68573)
+scale = Vector2(1.122366, 1.1365079)
+texture = ExtResource("2_r34rm")
+
+[node name="EyeSplit" type="HBoxContainer" parent="." unique_id=301077454]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftEye" type="Control" parent="EyeSplit" unique_id=1322448195]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_eye")
+
+[node name="RightEye" type="Control" parent="EyeSplit" unique_id=2114911943]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_eye")
